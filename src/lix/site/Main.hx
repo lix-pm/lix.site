@@ -11,6 +11,8 @@ class Main extends coconut.ui.View {
 		trace(Macro.getGitSha());
 		
 		document.body.appendChild(new Main({app: new AppData({})}).toElement());
+		
+		var remote = new tink.web.proxy.Remote<lix.api.Root>(null, null);
 	}
 	
 	@:attr var app:AppData;

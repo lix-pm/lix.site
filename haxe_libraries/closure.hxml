@@ -1,0 +1,4 @@
+-D closure=0.3.1
+# @install: lix --silent download "gh://github.com/back2dos/closure#4672316d049da93393313287d3fde42971b470c7" into closure/0.3.1/github/4672316d049da93393313287d3fde42971b470c7
+-cp ${HAXE_LIBCACHE}/closure/0.3.1/github/4672316d049da93393313287d3fde42971b470c7/src
+--macro closure.Compiler.use()

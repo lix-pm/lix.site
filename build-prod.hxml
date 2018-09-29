@@ -1,2 +1,6 @@
 build.hxml
+
+-lib closure
+
+-D closure_overwrite
 -D environment=prod

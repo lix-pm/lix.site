@@ -1,4 +1,4 @@
-package util;
+package lix.site.util;
 
 import haxe.macro.Context;
 

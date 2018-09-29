@@ -1,0 +1,6 @@
+-D spectatory=0.0.0
+# @install: lix --silent download "gh://github.com/kevinresol/spectatory#39cffced7d2633e664a8f5ead34e623254c51215" into spectatory/0.0.0/github/39cffced7d2633e664a8f5ead34e623254c51215
+-lib tink_url
+-lib tink_state
+-lib tink_pure
+-cp ${HAXE_LIBCACHE}/spectatory/0.0.0/github/39cffced7d2633e664a8f5ead34e623254c51215/src

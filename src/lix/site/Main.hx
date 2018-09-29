@@ -1,15 +1,34 @@
 package lix.site;
 
 import js.Browser.*;
+import lix.site.data.*;
+import lix.site.util.*;
+import coconut.router.ui.BrowserRouter as Router;
 
 class Main extends coconut.ui.View {
 	static function main() {
-		trace(lix.site.util.Macro.getBuildDate());
-		trace(lix.site.util.Macro.getGitSha());
-		document.body.appendChild(new Main({}).toElement());
+		trace(Macro.getBuildDate());
+		trace(Macro.getGitSha());
+		
+		document.body.appendChild(new Main({app: new AppData({})}).toElement());
 	}
 	
+	@:attr var app:AppData;
+	
 	function render() '
-		<h1>Lix</h1>
+		<Router router=${app.router}>
+			<switch ${app.router.route}>
+				<case ${Home}>
+					<h1>Lix</h1>
+				<case ${Register}>
+					<h1>Register</h1>
+				<case ${Login}>
+					<h1>Login</h1>
+				<case ${NotFound(path)}>
+					<span>Not Found: ${path}</span>
+				<case ${Error(o)}>
+					<span>${o.message}</span>
+			</switch>
+		</Router>
 	';
 }

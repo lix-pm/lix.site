@@ -3,3 +3,5 @@
 -js bin/js/index.js
 
 -lib coconut.vdom
+-lib coconut.router
+-lib tink_web

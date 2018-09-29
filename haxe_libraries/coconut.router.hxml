@@ -1,0 +1,6 @@
+-D coconut.router=0.0.0
+# @install: lix --silent download "gh://github.com/kevinresol/coconut.router#768c825526cf4b78bfd60ea7a00ad0c3dcb24904" into coconut.router/0.0.0/github/768c825526cf4b78bfd60ea7a00ad0c3dcb24904
+-lib coconut.data
+-lib coconut.ui
+-lib spectatory
+-cp ${HAXE_LIBCACHE}/coconut.router/0.0.0/github/768c825526cf4b78bfd60ea7a00ad0c3dcb24904/src

@@ -1,0 +1,29 @@
+sudo: required
+dist: trusty
+
+language: node_js
+node_js: 8
+
+env:
+  global:
+  - secure: g0/JI4shwzvjz199mDpd2MbO0e+FkwbiIZmDwdcHWmSL1dCCq3G255mzGeIl4KFjCuUnCpkvh/pTUrz6B04wYia4K5HFkh0gqjx+0jZmoQ//J3w9835J3gimX9QktPJVJ+4ZwW1reEfLmCeOO/FlvfXEI0gqhyjOVwQWrHSqQTZTeLFysRtafh+Bmg+3U+O/1dmRmDZKClk6i+GEzbud2DSUtapa1zeMphPL4IyqVwLkMhHVvhoqrjM0BEFu/KS3WMnqi2S3sDCowhVECFkz+vJjWl1th0f0eIgnIekCCTkDNCzZ1BM8Jn+JqMEY7YSXGojbU7scaU6We5LU9JJ83XWCyQbe/rWnIJNnXT3SC5hjxvQ0C/bQtX+Lbp1K0b22hk8epCrlnwzRHvKjG3ReRHzEvPAILRvwGfQFkG+UXcc4Jc2FQ7O45uHAzA49C1EWGp44yJ3eMa6fkjxcCjYt3K8pngaguD+hI4wHU8iUbIJdg0eSyEHAXfRmPpjazs14TUxEoNwfHFgTbytT3YCIyAk6NdhjhAnpTr/1OAtszah1je9HBg+pAjbFyreRsHTwJ7EtHw1C/zxe/BWa3sn7l5Soi9mii+bb7hRYJs1gtZunoxtO0xe2u0yL2ipDbN72JLwrNjsukpNQpzVlLR6vj2114ymicy9jydiKOKZxlyE= # AWS_ACCESS_KEY_ID
+  - secure: Zhs9CBP45AhGW1JOV6b952qtsMlWiftAhUDp2FX15Ix5gOBJ6YONWvSOosW7orS0ZK3oAMIqHvAVKoZ40SfGTnElS9KGUxxqo+v5smEdSKpYp2Ac3QKX8ewgYqkdE9AHnVOU+ZBRy4CXYRXhCUrIBRJnWyzGCbLRX3EUyVf+l0KfOU5eZcwcjq9tH6TK6JhjQquzxaKvDgzRMSrMhI7Oh8xYQbRCvKOSvDhnQkd6A4D4WZ00KQ+dkjT+JDYbiGpdkWqs71matpBef4z2DQUBR6IoZ50GeIhTC8rulSfowRV0ItsHrAQXk7FxSId+SIiRfj/S40oYc2JPjuTL9Wgdg7txC9NNVT3+sRk0/BG2DT59xqUIf196eIGnZ4iKG2IO1CQvfVohGLE1VAve/Jsr9+iaxY9zhaRcW4ohuj87qrapi1se88GhZklOW/0MONiGV/1WQGuUrc0CQnMvC/wIOmZlYSZaGAQa9bZhFug17wIPtmn0eT1OnGCRfB2fUjZ1IgHQQBwgLv1BZloOK8Z6Y0CLvqToi05+em/X1nXUSTC70SK0vMyHTqWf5C+uupa6iA92TbeqK8jBlg/H2xjrDW49lbNBb7vkKXNCZ4nRkk6KtNfegthPEmhoipAkCziETqLIyeduDAxLLLgu1+YtgGyWdx5XAFbHn1CT3kQNsQw= # AWS_SECRET_ACCESS_KEY
+
+before_install:
+  - sudo apt-get -y install python3-pip python-dev
+  - sudo pip3 install -U setuptools
+  - sudo pip3 install -U virtualenvwrapper
+  - python3 -V
+  - pip3 -V
+
+install:
+  - npm i -g lix
+  - lix download
+  - pip3 install --upgrade --user awscli
+  - export PATH=$PATH:~/.local/bin
+  
+script:
+  - haxe build-prod.hxml
+
+after_success: 
+  - aws s3 cp bin s3://lix-site --recursive

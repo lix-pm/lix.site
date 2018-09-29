@@ -1,0 +1,5 @@
+-cp src
+-main Main
+-js bin/js/index.js
+
+-lib coconut.vdom

@@ -1,5 +1,5 @@
 -D lix.server=0.0.0
-# @install: lix --silent download "gh://github.com/lix-pm/lix.server#47d7d882f33440ddb3f78573770533d3788565c2" into lix.server/0.0.0/github/47d7d882f33440ddb3f78573770533d3788565c2
+# @install: lix --silent download "gh://github.com/lix-pm/lix.server#50f5f7b3ddca8c8211a4fdff936e3dab9b5c0de9" into lix.server/0.0.0/github/50f5f7b3ddca8c8211a4fdff936e3dab9b5c0de9
 -lib tink_semver
 -lib tink_sql
--cp ${HAXE_LIBCACHE}/lix.server/0.0.0/github/47d7d882f33440ddb3f78573770533d3788565c2/lib
+-cp ${HAXE_LIBCACHE}/lix.server/0.0.0/github/50f5f7b3ddca8c8211a4fdff936e3dab9b5c0de9/lib

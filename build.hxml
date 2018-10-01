@@ -6,3 +6,4 @@
 -lib coconut.router
 -lib tink_web
 -lib lix.server
+-lib hxjs-amazon-cognito-auth-js

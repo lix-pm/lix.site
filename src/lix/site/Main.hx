@@ -11,7 +11,8 @@ class Main extends coconut.ui.View {
 		trace(Macro.getBuildDate());
 		trace(Macro.getGitSha());
 		
-		
+		trace(new CognitoAuth().getSignInUserSession().idToken.payload);
+		trace(new CognitoAuth().getSignInUserSession().accessToken.payload);
 		
 		var data = new AppData({
 			user: new UserData({

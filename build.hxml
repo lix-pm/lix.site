@@ -5,5 +5,5 @@
 -lib coconut.vdom
 -lib coconut.router
 -lib tink_web
--lib lix.server
+-lib lix.sdk
 -lib hxjs-amazon-cognito-auth-js

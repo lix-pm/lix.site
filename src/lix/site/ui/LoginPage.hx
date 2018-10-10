@@ -11,19 +11,14 @@ class LoginPage extends coconut.ui.View {
 	
 	override function afterInit(e) {
 		var auth = new CognitoAuth();
-		
-		auth.userhandler = {
-			onSuccess: function(session) {
-				app.user.id = switch try session.idToken.payload.sub catch(e:Dynamic) null {
-					case null: try Json.parse(Base64.decode(session.idToken.jwtToken.split('.')[1]).toString()).sub catch(e:Dynamic) null;
-					case v: v;
-				}
+		auth.result.handle(function(o) switch o {
+			case Success(session): 
+				app.user.id = try Json.parse(Base64.decode(session.idToken.split('.')[1]).toString()).sub catch(e:Dynamic) null;
 				// TODO: store redirect url in local storage before initializing the login sequence
 				spectatory.Location.replace('/');
-			},
-			onFailure: function(result) trace(result),
-		}
-		
+			case Failure(e):
+				trace(e);
+		});
 		auth.parseUrl();
 	}
 }

@@ -12,8 +12,9 @@ class HomePage extends coconut.ui.View {
 				<case ${null}>
 					<button onclick=${login}>Login</button>
 				<case ${id}>
-					<span>Logged in as ${id}</span>
-					<button onclick=${logout}>Logout</button>
+					<div>Logged in as ${id}</div>
+					<pre>${haxe.Json.stringify(app.user.data, '  ')}</pre>
+					<div><button onclick=${logout}>Logout</button></div>
 			</switch>
 		</div>
 	';
